@@ -20,9 +20,9 @@ def apply_rayleigh(signal, snr_db, num_taps=1):
     if num_taps == 1:
         h = np.array([1.0 + 0j]) # Canal plano (solo AWGN básicamente)
     else:
-        # Generar taps aleatorios con perfil de potencia decreciente
+        # Generar taps aleatorios
         # Ejemplo fijo
-        base_h = np.array([1, 0.2, 0.1, 0.05, 0.01])
+        base_h = np.array([1.0, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.5, 0.5, 0.5])
         if num_taps <= len(base_h):
             h = base_h[:num_taps]
         else:

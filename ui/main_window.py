@@ -76,7 +76,7 @@ class MainWindow(ctk.CTk):
 
         self.lbl_paths = ctk.CTkLabel(self.sidebar_frame, text="Caminos (Multipath): 1")
         self.lbl_paths.grid(row=8, column=0, padx=20, pady=(10,0))
-        self.slider_paths = ctk.CTkSlider(self.sidebar_frame, from_=1, to=6, number_of_steps=5, command=self.update_paths_label)
+        self.slider_paths = ctk.CTkSlider(self.sidebar_frame, from_=1, to=10, number_of_steps=9, command=self.update_paths_label)
         self.slider_paths.grid(row=9, column=0, padx=20, pady=5)
         self.slider_paths.set(1)
 
