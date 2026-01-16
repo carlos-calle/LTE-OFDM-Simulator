@@ -20,9 +20,8 @@ def apply_rayleigh(signal, snr_db, num_taps=1):
     if num_taps == 1:
         h = np.array([1.0 + 0j]) # Canal plano (solo AWGN básicamente)
     else:
-        # Generar taps aleatorios
         # Ejemplo fijo
-        base_h = np.array([1.0, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.5, 0.5, 0.5])
+        base_h = np.array([1.0, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.5, 0.5])
         if num_taps <= len(base_h):
             h = base_h[:num_taps]
         else:
@@ -45,3 +44,39 @@ def apply_rayleigh(signal, snr_db, num_taps=1):
     signal_noisy = apply_awgn(signal_convolved, snr_db)
     
     return signal_noisy, h
+
+
+
+
+
+
+
+
+
+'''
+def apply_rayleigh(signal, snr_db, num_taps=1):
+    """
+    Simula canal multipath SISO (1 Tx -> 1 Rx).
+    """
+    if num_taps == 1:
+        h = np.array([1.0 + 0j]) 
+    else:
+        # Generación Aleatoria (Rayleigh) ---
+        h_random = (np.random.randn(num_taps) + 1j*np.random.randn(num_taps))
+
+        decay_factor = np.exp(-0.5 * np.arange(num_taps))
+        h = h_random * decay_factor
+        
+        # Normalizar energía del canal a 1
+        h = h / np.sqrt(np.sum(np.abs(h)**2))
+
+    # Convolución
+    signal_convolved = np.convolve(signal, h, mode='full')
+    signal_convolved = signal_convolved[:len(signal)]
+
+    # Añadir ruido AWGN
+    signal_noisy = apply_awgn(signal_convolved, snr_db)
+    
+    return signal_noisy, h
+
+'''

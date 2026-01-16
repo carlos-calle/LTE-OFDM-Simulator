@@ -14,9 +14,8 @@ LTE_BANDWIDTHS = {
 # Configuración de Perfiles de Retardo (Prefijo Cíclico)
 # Estructura: 'ID': (Delta_F, CP_Length_Ratio)
 LTE_PROFILES = {
-    1: (15000, 0.047), # Normal
-    2: (15000, 0.166), # Extendido
-    3: (7500, 0.33)    # Extendido bajo
+    1: (15000, 0.072), # Normal
+    2: (15000, 0.25) # Extendido
 }
 
 # Constelaciones de Modulación
